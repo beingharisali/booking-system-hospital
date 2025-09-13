@@ -1,12 +1,8 @@
-import type { Metadata } from "next";
 import "./globals.css";
-import Sidebar from "./components/Sidebar";
-import Navbar from "./components/Navbar";
+import { Inter } from "next/font/google";
+import React from "react"; 
 
-export const metadata: Metadata = {
-  title: "HealthSol Admin",
-  description: "Hospital Management Admin Panel",
-};
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -15,15 +11,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="flex min-h-screen bg-gray-100">
-        {/* Sidebar */}
-        <Sidebar />
-
-        {/* Main Content */}
-        <div className="flex-1 flex flex-col">
-          <Navbar />
-          <main className="p-4">{children}</main>
-        </div>
+      <body className={`${inter.className} flex h-screen bg-gray-100`}>
+        {children}
       </body>
     </html>
   );
