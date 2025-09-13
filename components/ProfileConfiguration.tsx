@@ -1,5 +1,6 @@
 import React from 'react';
 
+    
 const ProfileConfiguration: React.FC = () => {
   return (
     <div className="p-4">
