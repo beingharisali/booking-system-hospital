@@ -1,3 +1,4 @@
+// Sidebar.tsx
 'use client';
 
 import React, { useState } from 'react';
@@ -49,12 +50,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
     <aside
       className={`fixed top-0 left-0 h-full bg-gray-800 text-white w-64 transform transition-transform duration-300 ease-in-out ${
         isOpen ? 'translate-x-0' : '-translate-x-full'
-      } z-30`}
+      } z-30 flex flex-col`} 
     >
-      <div className="flex items-center justify-center p-4 bg-gray-900">
+      <div className="flex items-center justify-center p-4 bg-gray-900 flex-shrink-0"> {/* Added flex-shrink-0 */}
         <Image src="/logo.png" alt="Healthsol" width={100} height={40} /> 
       </div>
-      <nav className="mt-4">
+      <nav className="mt-4 flex-1 overflow-y-auto"> {/* Added flex-1 and overflow-y-auto here */}
         <div className="p-4 text-sm uppercase text-gray-400">Main Navigation</div>
         <NavItem label="Profile Management">
           <SubItem label="Profile/LOV" />
@@ -69,24 +70,35 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
         </NavItem>
         <NavItem label="Organization Management">
           {/* sub items likhni hain yaha sir*/}
-          <SubItem label="" />
-          <SubItem label="" />
-          <SubItem label="" />
-          <SubItem label="" />
-          <SubItem label="" />
-          <SubItem label="" />
-          <SubItem label="" />
-          <SubItem label="" />
-          <SubItem label="" />
+          <SubItem label="Organizations" /> {/* Example sub-item */}
+          <SubItem label="Departments" /> {/* Example sub-item */}
+          <SubItem label="Units" /> {/* Example sub-item */}
         </NavItem>
         <NavItem label="Location Management">
-          {/* sub items */}
+          <SubItem label="Locations" /> {/* Example sub-item */}
+          <SubItem label="Warehouses" /> {/* Example sub-item */}
         </NavItem>
         <NavItem label="Contact Management">
-          {/* sub items */}
+          <SubItem label="Contacts" /> {/* Example sub-item */}
         </NavItem>
         <NavItem label="Employee Management">
-          {/* sub items */}
+          <SubItem label="Employees" /> {/* Example sub-item */}
+        </NavItem>
+        {/* Adding more items to demonstrate scrolling */}
+        <NavItem label="Reporting">
+          <SubItem label="Sales Report" />
+          <SubItem label="Inventory Report" />
+        </NavItem>
+        <NavItem label="Settings">
+          <SubItem label="General Settings" />
+          <SubItem label="User Management" />
+        </NavItem>
+        <NavItem label="Help">
+          <SubItem label="Documentation" />
+          <SubItem label="Support" />
+        </NavItem>
+        <NavItem label="About">
+          <SubItem label="Version Info" />
         </NavItem>
       </nav>
     </aside>
