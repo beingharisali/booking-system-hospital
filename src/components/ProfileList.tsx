@@ -1,4 +1,3 @@
-// ProfileList.tsx
 import React, { useState } from "react";
 import { FaEdit, FaChevronUp, FaChevronDown } from "react-icons/fa";
 
@@ -67,7 +66,6 @@ const ProfileList: React.FC = () => {
     },
   ]);
 
-  // Toggle checkbox handler
   const toggleEnable = (index: number) => {
     const updatedProfiles = [...profiles];
     updatedProfiles[index].enable = !updatedProfiles[index].enable;
@@ -76,7 +74,6 @@ const ProfileList: React.FC = () => {
 
   return (
     <div className="p-4">
-      {/* Search bar */}
       <div className="flex justify-end mb-4">
         <div className="flex items-center">
           <label htmlFor="search" className="mr-2 text-gray-700 font-semibold">
@@ -90,7 +87,6 @@ const ProfileList: React.FC = () => {
         </div>
       </div>
 
-      {/* Table */}
       <div className="overflow-x-auto">
         <table className="min-w-full border border-gray-300">
           <thead>
@@ -151,12 +147,10 @@ const ProfileList: React.FC = () => {
         </table>
       </div>
 
-      {/* Showing entries text */}
       <div className="flex justify-between items-center mt-4 text-sm text-gray-600">
         <div>
           Showing 1 to {profiles.length} of {profiles.length} entries
         </div>
-        {/* You can add pagination controls here if needed */}
       </div>
       
     </div>

@@ -3,15 +3,12 @@ import React from "react";
 const ProfileConfiguration: React.FC = () => {
   return (
     <div className="p-4">
-      {/* Header */}
       <div className="bg-[#2f3b3f] text-white px-4 py-2 font-semibold">
         Profile Configuration
       </div>
 
-      {/* Form Section */}
       <div className="border border-gray-300 p-6 bg-gray-50">
         <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
-          {/* ID */}
           <div className="col-span-2">
             <label
               htmlFor="id"
@@ -26,7 +23,6 @@ const ProfileConfiguration: React.FC = () => {
             />
           </div>
 
-          {/* Profile Type */}
           <div className="col-span-2">
             <label
               htmlFor="profileType"
@@ -42,7 +38,6 @@ const ProfileConfiguration: React.FC = () => {
             </select>
           </div>
 
-          {/* Name */}
           <div className="col-span-2">
             <label
               htmlFor="name"
@@ -57,7 +52,6 @@ const ProfileConfiguration: React.FC = () => {
             />
           </div>
 
-          {/* Urdu Name */}
           <div className="col-span-2">
             <label
               htmlFor="urduName"
@@ -72,7 +66,6 @@ const ProfileConfiguration: React.FC = () => {
             />
           </div>
 
-          {/* Code */}
           <div className="col-span-1">
             <label
               htmlFor="code"
@@ -87,7 +80,6 @@ const ProfileConfiguration: React.FC = () => {
             />
           </div>
 
-          {/* Seq No */}
           <div className="col-span-1">
             <label
               htmlFor="seqNo"
@@ -102,7 +94,6 @@ const ProfileConfiguration: React.FC = () => {
             />
           </div>
 
-          {/* Prefix */}
           <div className="col-span-2">
             <label
               htmlFor="prefix"
@@ -118,7 +109,6 @@ const ProfileConfiguration: React.FC = () => {
           </div>
         </div>
 
-        {/* Buttons */}
         <div className="flex space-x-4 mt-6">
           <button className="bg-[#54717c] hover:bg-[#435b63] text-white font-semibold py-2 px-6 rounded">
             Save
