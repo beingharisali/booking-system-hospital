@@ -1,5 +1,5 @@
 import React from 'react'
-import Dashboard from './profile-management/dashboard/page'
+import Dashboard from './dashboard/page'
 function MainPage() {
   return (
     <div>

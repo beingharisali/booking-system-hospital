@@ -13,6 +13,8 @@ import City from '@/components/City';
 import CityList from '@/components/CityList';
 import Currency from '@/components/Currency';
 import CurrencyList from '@/components/CurrencyList';
+import Title from '@/components/Title'; // Added
+import TitleList from '@/components/TitleList'; // Added
 import Footer from '@/components/Footer';
 
 export default function CombinedDashboardPage() {
@@ -116,6 +118,23 @@ export default function CombinedDashboardPage() {
             <div className="bg-white p-6 rounded-lg shadow">
               <h2 className="text-xl font-semibold mb-4">Currency List</h2>
               <CurrencyList />
+            </div>
+          )}
+
+          {/* Conditional rendering for Title components (Added) */}
+          {activeItem === "Title" && (
+            <div className="bg-white p-6 rounded-lg shadow mb-6">
+              <h2 className="text-xl font-semibold mb-4">
+                Dash Board <span className="text-gray-400">/</span> Title
+              </h2>
+              <Title />
+            </div>
+          )}
+
+          {activeItem === "Title" && (
+            <div className="bg-white p-6 rounded-lg shadow">
+              <h2 className="text-xl font-semibold mb-4">Title List</h2>
+              <TitleList />
             </div>
           )}
         </main>
