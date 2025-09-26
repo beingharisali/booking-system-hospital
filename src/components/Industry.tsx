@@ -39,14 +39,14 @@ const Industry: React.FC = () => {
 
           <div className="col-span-1">
             <label
-              htmlFor="industryPrefix"
+              htmlFor="prefix"
               className="block text-gray-700 text-sm font-semibold mb-1"
             >
               Prefix <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
-              id="industryPrefix"
+              id="prefix"
               className="border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring focus:border-blue-300"
             />
           </div>

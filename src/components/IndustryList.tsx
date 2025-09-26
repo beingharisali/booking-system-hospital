@@ -3,13 +3,12 @@ import { FaEdit, FaTrashAlt, FaChevronUp, FaChevronDown } from 'react-icons/fa';
 
 interface Industry {
   sr: number;
-  name: string;
+  industryName: string;
   prefix: string;
 }
 
 const IndustryList: React.FC = () => {
-  const industries: Industry[] = [
-  ];
+  const industries: Industry[] = [];
 
   return (
     <div className="p-4">
@@ -30,13 +29,7 @@ const IndustryList: React.FC = () => {
         <table className="min-w-full border border-gray-300">
           <thead>
             <tr className="bg-[#5a7b8c] text-white text-sm uppercase">
-              {[
-                "Sr#",
-                "Industry Name",
-                "Prefix",
-                "Edit",
-                "Delete",
-              ].map((header, index) => (
+              {["Sr#", "Industry Name", "Prefix", "Edit", "Delete"].map((header, index) => (
                 <th
                   key={index}
                   className="py-2 px-4 text-left border border-gray-400 font-semibold"
@@ -57,7 +50,7 @@ const IndustryList: React.FC = () => {
           <tbody className="text-gray-700 text-sm">
             {industries.length === 0 ? (
               <tr>
-                <td colSpan={5} className="py-4 px-4 text-center">
+                <td colSpan={5} className="py-4 px-4 text-center text-gray-500">
                   No data available in table
                 </td>
               </tr>
@@ -65,7 +58,7 @@ const IndustryList: React.FC = () => {
               industries.map((industry, index) => (
                 <tr key={index} className="border-b border-gray-300">
                   <td className="py-2 px-4">{industry.sr}</td>
-                  <td className="py-2 px-4">{industry.name}</td>
+                  <td className="py-2 px-4">{industry.industryName}</td>
                   <td className="py-2 px-4">{industry.prefix}</td>
                   <td className="py-2 px-4 text-center">
                     <button className="text-gray-700 hover:text-blue-600">
@@ -83,13 +76,12 @@ const IndustryList: React.FC = () => {
           </tbody>
         </table>
       </div>
-      {industries.length > 0 && (
-        <div className="flex justify-between items-center mt-4 text-sm text-gray-600">
-          <div>
-            Showing 1 to {industries.length} of {industries.length} entries
-          </div>
+
+      <div className="flex justify-between items-center mt-4 text-sm text-gray-600">
+        <div>
+          Showing {industries.length > 0 ? 1 : 0} to {industries.length} of {industries.length} entries
         </div>
-      )}
+      </div>
     </div>
   );
 };
