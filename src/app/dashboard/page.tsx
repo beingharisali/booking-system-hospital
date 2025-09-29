@@ -18,8 +18,6 @@ import Title from '@/components/Title';
 import TitleList from '@/components/TitleList';
 import Theme from '@/components/Theme'; 
 import ThemeList from '@/components/ThemeList'; 
-import Industry from '@/components/Industry'; 
-import IndustryList from '@/components/IndustryList'; 
 import Footer from '@/components/Footer';
 
 export default function CombinedDashboardPage() {
@@ -154,23 +152,6 @@ export default function CombinedDashboardPage() {
             <div className="bg-white p-6 rounded-lg shadow">
               <h2 className="text-xl font-semibold mb-4">Theme List</h2>
               <ThemeList />
-            </div>
-          )}
-
-          {/* New Industry Section */}
-          {activeItem === "Industry" && (
-            <div className="bg-white p-6 rounded-lg shadow mb-6">
-              <h2 className="text-xl font-semibold mb-4">
-                Dash Board <span className="text-gray-400">/</span> Industry Form
-              </h2>
-              <Industry />
-            </div>
-          )}
-
-          {activeItem === "Industry" && (
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h2 className="text-xl font-semibold mb-4">Industry List</h2>
-              <IndustryList />
             </div>
           )}
         </main>

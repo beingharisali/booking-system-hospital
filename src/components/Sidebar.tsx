@@ -143,11 +143,6 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, activeItem, setActiveItem }) 
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
-          <SubItem 
-            label="Industry"
-            activeItem={activeItem}
-            setActiveItem={setActiveItem}
-          />
         </NavItem>
 
         <NavItem
