@@ -143,6 +143,11 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, activeItem, setActiveItem }) 
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
+          <SubItem 
+            label="Document Movement" 
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+          />
         </NavItem>
 
         <NavItem
