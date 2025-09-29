@@ -1,3 +1,4 @@
+// dashboard/page.tsx or CombinedDashboardPage.tsx
 'use client';
 import React, { useState } from 'react';
 
