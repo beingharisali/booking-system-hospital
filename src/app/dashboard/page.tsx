@@ -1,4 +1,3 @@
-// dashboard/page.tsx or CombinedDashboardPage.tsx
 'use client';
 import React, { useState } from 'react';
 
@@ -18,8 +17,10 @@ import Title from '@/components/Title';
 import TitleList from '@/components/TitleList';
 import Theme from '@/components/Theme'; 
 import ThemeList from '@/components/ThemeList'; 
-import DocumentMovement from '@/components/DocumentMovement'; // Import the new component
-import DocumentMovementList from '@/components/DocumentMovementList'; // Import the new component
+import DocumentMovement from '@/components/DocumentMovement';
+import DocumentMovementList from '@/components/DocumentMovementList';
+import EmailConfiguration from '@/components/EmailConfiguration'; 
+import EmailConfigurationList from '@/components/EmailConfigurationList';
 import Footer from '@/components/Footer';
 
 export default function CombinedDashboardPage() {
@@ -170,6 +171,21 @@ export default function CombinedDashboardPage() {
             <div className="bg-white p-6 rounded-lg shadow">
               <h2 className="text-xl font-semibold mb-4">Document Movement List</h2>
               <DocumentMovementList />
+            </div>
+          )}
+
+          {activeItem === "Email Alerts" && (
+            <div className="bg-white p-6 rounded-lg shadow mb-6">
+              <h2 className="text-xl font-semibold mb-4">
+                Dash Board <span className="text-gray-400">/</span> EMail Configuration
+              </h2>
+              <EmailConfiguration />
+            </div>
+          )}
+
+          {activeItem === "Email Alerts" && (
+            <div className="bg-white p-6 rounded-lg shadow">
+              <EmailConfigurationList />
             </div>
           )}
         </main>
