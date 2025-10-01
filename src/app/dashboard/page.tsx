@@ -15,17 +15,19 @@ import Currency from '@/components/Currency';
 import CurrencyList from '@/components/CurrencyList';
 import Title from '@/components/Title';
 import TitleList from '@/components/TitleList';
-import Theme from '@/components/Theme'; 
-import ThemeList from '@/components/ThemeList'; 
+import Theme from '@/components/Theme';
+import ThemeList from '@/components/ThemeList';
 import DocumentMovement from '@/components/DocumentMovement';
 import DocumentMovementList from '@/components/DocumentMovementList';
-import EmailConfiguration from '@/components/EmailConfiguration'; 
+import EmailConfiguration from '@/components/EmailConfiguration';
 import EmailConfigurationList from '@/components/EmailConfigurationList';
+import SMSConfiguration from '@/components/SMSConfiguration'; 
+import SMSConfigurationList from '@/components/SMSConfigurationList'; 
 import Footer from '@/components/Footer';
 
 export default function CombinedDashboardPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [activeItem, setActiveItem] = useState("Profile/LOV"); 
+  const [activeItem, setActiveItem] = useState("Profile/LOV");
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -55,7 +57,7 @@ export default function CombinedDashboardPage() {
             </div>
           )}
 
-          {activeItem === "Profile/LOV" && ( 
+          {activeItem === "Profile/LOV" && (
             <div className="bg-white p-6 rounded-lg shadow">
               <h2 className="text-xl font-semibold mb-4">Profile List</h2>
               <ProfileList />
@@ -171,6 +173,21 @@ export default function CombinedDashboardPage() {
             <div className="bg-white p-6 rounded-lg shadow">
               <h2 className="text-xl font-semibold mb-4">Document Movement List</h2>
               <DocumentMovementList />
+            </div>
+          )}
+
+          {activeItem === "SMS Alerts" && ( 
+            <div className="bg-white p-6 rounded-lg shadow mb-6">
+              <h2 className="text-xl font-semibold mb-4">
+                Dash Board <span className="text-gray-400">/</span> SMS Configuration
+              </h2>
+              <SMSConfiguration />
+            </div>
+          )}
+
+          {activeItem === "SMS Alerts" && ( 
+            <div className="bg-white p-6 rounded-lg shadow">
+              <SMSConfigurationList />
             </div>
           )}
 
