@@ -188,6 +188,32 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, activeItem, setActiveItem }) 
             setActiveItem={setActiveItem}
           />
         </NavItem>
+        
+        <NavItem
+          label="Alerts Management"
+          activeItem={activeItem}
+          setActiveItem={setActiveItem}
+        >
+          <SubItem
+            label="SMS Alerts"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+          />
+          <SubItem
+            label="Email Alerts"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+          />
+        </NavItem>
+
+        <NavItem label="Menu Configuration" activeItem={activeItem} setActiveItem={setActiveItem} />
+        <NavItem label="Report Configuration" activeItem={activeItem} setActiveItem={setActiveItem} />
+        <NavItem label="User Management" activeItem={activeItem} setActiveItem={setActiveItem} />
+        <NavItem label="Policy Management" activeItem={activeItem} setActiveItem={setActiveItem} />
+        <NavItem label="Template Management" activeItem={activeItem} setActiveItem={setActiveItem} />
+        <NavItem label="Utility Management" activeItem={activeItem} setActiveItem={setActiveItem} />
+        <NavItem label="Reports Management" activeItem={activeItem} setActiveItem={setActiveItem} />
+
       </nav>
     </aside>
   );
