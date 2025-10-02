@@ -23,11 +23,14 @@ import EmailConfiguration from '@/components/EmailConfiguration';
 import EmailConfigurationList from '@/components/EmailConfigurationList';
 import SMSConfiguration from '@/components/SMSConfiguration'; 
 import SMSConfigurationList from '@/components/SMSConfigurationList'; 
+import CollectionPoint from '@/components/CollectionPoint'; 
+import CollectionPointList from '@/components/CollectionPointList'; 
 import Footer from '@/components/Footer';
 
 export default function CombinedDashboardPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [activeItem, setActiveItem] = useState("Profile/LOV");
+  // Changed default active item back to "Profile/LOV"
+  const [activeItem, setActiveItem] = useState("Profile/LOV"); 
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -203,6 +206,22 @@ export default function CombinedDashboardPage() {
           {activeItem === "Email Alerts" && (
             <div className="bg-white p-6 rounded-lg shadow">
               <EmailConfigurationList />
+            </div>
+          )}
+
+          {activeItem === "Collection Point" && (
+            <div className="bg-white p-6 rounded-lg shadow mb-6">
+              <h2 className="text-xl font-semibold mb-4">
+                Dash Board <span className="text-gray-400">/</span> Party Collection
+              </h2>
+              <CollectionPoint />
+            </div>
+          )}
+
+          {activeItem === "Collection Point" && (
+            <div className="bg-white p-6 rounded-lg shadow">
+              <h2 className="text-xl font-semibold mb-4">Collection Point List</h2>
+              <CollectionPointList />
             </div>
           )}
         </main>
