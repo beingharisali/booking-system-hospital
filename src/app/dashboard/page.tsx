@@ -26,10 +26,11 @@ import SMSConfigurationList from '@/components/SMSConfigurationList';
 import CollectionPoint from '@/components/CollectionPoint'; 
 import CollectionPointList from '@/components/CollectionPointList'; 
 import Footer from '@/components/Footer';
+import ConsultantRegistration from '@/components/ConsultantRegistration';
+import ConsultantRegistrationList from '@/components/ConsultantRegistrationList';
 
 export default function CombinedDashboardPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  // Changed default active item back to "Profile/LOV"
   const [activeItem, setActiveItem] = useState("Profile/LOV"); 
 
   const toggleSidebar = () => {
@@ -224,6 +225,22 @@ export default function CombinedDashboardPage() {
               <CollectionPointList />
             </div>
           )}
+
+          {activeItem === "Consultant Registration" && (
+            <div className="bg-white p-6 rounded-lg shadow mb-6">
+              <h2 className="text-xl font-semibold mb-4">
+                Dash Board <span className="text-gray-400">/</span> Consultant Registration
+              </h2>
+              <ConsultantRegistration />
+            </div>
+          )}
+
+          {activeItem === "Consultant Registration" && (
+            <div className="bg-white p-6 rounded-lg shadow">
+              <ConsultantRegistrationList />
+            </div>
+          )}
+
         </main>
 
         <Footer />
