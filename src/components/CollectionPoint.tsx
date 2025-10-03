@@ -29,7 +29,6 @@ const CollectionPoint: React.FC = () => {
               className="border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring focus:border-blue-300"
             >
               <option>Select Currency</option>
-              {/* Add currency options dynamically if needed */}
             </select>
           </div>
           <div>
@@ -258,7 +257,6 @@ const CollectionPoint: React.FC = () => {
               className="border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring focus:border-blue-300"
             >
               <option>Select Country</option>
-              {/* Add country options */}
             </select>
           </div>
           <div>
@@ -270,7 +268,6 @@ const CollectionPoint: React.FC = () => {
               className="border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring focus:border-blue-300"
             >
               <option>Select Province</option>
-              {/* Add province options */}
             </select>
           </div>
           <div className="flex items-end">
@@ -283,7 +280,6 @@ const CollectionPoint: React.FC = () => {
                 className="border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:ring focus:border-blue-300"
               >
                 <option>Select City</option>
-                {/* Add city options */}
               </select>
             </div>
             <button className="ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-3 rounded-r">
@@ -441,7 +437,6 @@ const CollectionPoint: React.FC = () => {
           </div>
         </div>
 
-        {/* Table for Contact Persons */}
         <div className="overflow-x-auto mb-6">
           <table className="min-w-full border border-gray-300">
             <thead>
