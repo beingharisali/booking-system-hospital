@@ -190,6 +190,55 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, activeItem, setActiveItem }) 
         </NavItem>
         
         <NavItem
+          label="Contact Management"
+          activeItem={activeItem}
+          setActiveItem={setActiveItem}
+        >
+          <SubItem
+            label="Consultant Registration"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+          />
+          <SubItem
+            label="Collection Point" 
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+          />
+          <SubItem
+            label="Corporate Registration"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+          />
+          <SubItem
+            label="Party Registration"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+          />
+          <SubItem
+            label="Referral Registration"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+          />
+          <SubItem
+            label="Person Registration"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+          />
+          <SubItem
+            label="Party Pricing"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+          />
+        </NavItem>
+        
+        <NavItem
+          label="Employee Management"
+          activeItem={activeItem}
+          setActiveItem={setActiveItem}
+        >
+        </NavItem>
+
+        <NavItem
           label="Alerts Management"
           activeItem={activeItem}
           setActiveItem={setActiveItem}
