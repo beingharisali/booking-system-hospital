@@ -25,6 +25,8 @@ import SMSConfiguration from '@/components/SMSConfiguration';
 import SMSConfigurationList from '@/components/SMSConfigurationList'; 
 import CollectionPoint from '@/components/CollectionPoint'; 
 import CollectionPointList from '@/components/CollectionPointList'; 
+import CorporateRegistration from '@/components/CorporateRegistration'; 
+import CorporateRegistrationList from '@/components/CorporateRegistrationList'; 
 import Footer from '@/components/Footer';
 import ConsultantRegistration from '@/components/ConsultantRegistration';
 import ConsultantRegistrationList from '@/components/ConsultantRegistrationList';
@@ -238,6 +240,22 @@ export default function CombinedDashboardPage() {
           {activeItem === "Consultant Registration" && (
             <div className="bg-white p-6 rounded-lg shadow">
               <ConsultantRegistrationList />
+            </div>
+          )}
+
+          {activeItem === "Corporate Registration" && (
+            <div className="bg-white p-6 rounded-lg shadow mb-6">
+              <h2 className="text-xl font-semibold mb-4">
+                Dash Board <span className="text-gray-400">/</span> Corporate Registration
+              </h2>
+              <CorporateRegistration />
+            </div>
+          )}
+
+          {activeItem === "Corporate Registration" && (
+            <div className="bg-white p-6 rounded-lg shadow">
+              <h2 className="text-xl font-semibold mb-4">Corporate Registration List</h2>
+              <CorporateRegistrationList />
             </div>
           )}
 
