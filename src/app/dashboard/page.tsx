@@ -33,7 +33,8 @@ import PartyPricing from '@/components/PartyPricing';
 import PartyPricingList from '@/components/PartyPricingList'; 
 import PartyRegistration from '@/components/PartyRegistration'; 
 import PartyRegistrationList from '@/components/PartyRegistrationList'; 
-
+import PersonRegistration from '@/components/PersonRegistration';
+import PersonRegistrationList from '@/components/PersonRegistrationList';
 
 import Footer from '@/components/Footer';
 
@@ -263,6 +264,22 @@ export default function CombinedDashboardPage() {
             <div className="bg-white p-6 rounded-lg shadow">
               <h2 className="text-xl font-semibold mb-4">Corporate Registration List</h2>
               <CorporateRegistrationList />
+            </div>
+          )}
+
+          {activeItem === "Person Registration" && (
+            <div className="bg-white p-6 rounded-lg shadow mb-6">
+              <h2 className="text-xl font-semibold mb-4">
+                Dash Board <span className="text-gray-400">/</span> Person Registration
+              </h2>
+              <PersonRegistration />
+            </div>
+          )}
+
+          {activeItem === "Person Registration" && (
+            <div className="bg-white p-6 rounded-lg shadow">
+              <h2 className="text-xl font-semibold mb-4">Person List</h2>
+              <PersonRegistrationList />
             </div>
           )}
 
