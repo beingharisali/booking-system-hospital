@@ -35,6 +35,8 @@ import PartyRegistration from '@/components/PartyRegistration';
 import PartyRegistrationList from '@/components/PartyRegistrationList'; 
 import PersonRegistration from '@/components/PersonRegistration';
 import PersonRegistrationList from '@/components/PersonRegistrationList';
+import ReferralRegistration from '@/components/ReferralRegistration';
+import ReferralRegistrationList from '@/components/ReferralRegistrationList';
 
 import Footer from '@/components/Footer';
 
@@ -313,6 +315,22 @@ export default function CombinedDashboardPage() {
               <PartyRegistrationList />
             </div>
           )}
+
+          {activeItem === "Referral Registration" && (
+  <div className="bg-white p-6 rounded-lg shadow mb-6">
+    <h2 className="text-xl font-semibold mb-4">
+      Dash Board <span className="text-gray-400">/</span> Referral Registration
+    </h2>
+    <ReferralRegistration />
+  </div>
+)}
+
+{activeItem === "Referral Registration" && (
+  <div className="bg-white p-6 rounded-lg shadow">
+    <h2 className="text-xl font-semibold mb-4">Referral List</h2>
+    <ReferralRegistrationList />
+  </div>
+)}
         </main>
 
         <Footer />
