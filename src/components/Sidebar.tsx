@@ -220,7 +220,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, activeItem, setActiveItem }) 
             setActiveItem={setActiveItem}
           />
           <SubItem
-            label="Person Registration"
+            label="Person Registration" 
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
