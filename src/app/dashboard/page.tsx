@@ -27,9 +27,12 @@ import CollectionPoint from '@/components/CollectionPoint';
 import CollectionPointList from '@/components/CollectionPointList'; 
 import CorporateRegistration from '@/components/CorporateRegistration'; 
 import CorporateRegistrationList from '@/components/CorporateRegistrationList'; 
-import Footer from '@/components/Footer';
 import ConsultantRegistration from '@/components/ConsultantRegistration';
 import ConsultantRegistrationList from '@/components/ConsultantRegistrationList';
+import PartyPricing from '@/components/PartyPricing'; 
+import PartyPricingList from '@/components/PartyPricingList'; 
+import Footer from '@/components/Footer';
+
 
 export default function CombinedDashboardPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -256,6 +259,22 @@ export default function CombinedDashboardPage() {
             <div className="bg-white p-6 rounded-lg shadow">
               <h2 className="text-xl font-semibold mb-4">Corporate Registration List</h2>
               <CorporateRegistrationList />
+            </div>
+          )}
+
+          {activeItem === "Party Pricing" && (
+            <div className="bg-white p-6 rounded-lg shadow mb-6">
+              <h2 className="text-xl font-semibold mb-4">
+                Dash Board <span className="text-gray-400">/</span> Party Pricing
+              </h2>
+              <PartyPricing />
+            </div>
+          )}
+
+          {activeItem === "Party Pricing" && (
+            <div className="bg-white p-6 rounded-lg shadow">
+              <h2 className="text-xl font-semibold mb-4">Party Price List</h2>
+              <PartyPricingList />
             </div>
           )}
 
