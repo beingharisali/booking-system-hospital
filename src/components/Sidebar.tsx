@@ -2,12 +2,13 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 interface SidebarProps {
   isOpen: boolean;
-  activeItem: string; 
-  setActiveItem: (item: string) => void; 
+  activeItem: string;
+  setActiveItem: (item: string) => void;
 }
 
 interface NavItemProps {
@@ -28,7 +29,7 @@ const NavItem: React.FC<NavItemProps> = ({
     (children &&
       React.Children.toArray(children).some(
         (child) =>
-          React.isValidElement<{ label: string }>(child) &&
+          React.isValidElement<{ label: string; href?: string }>(child) &&
           child.props.label === activeItem
       ));
 
@@ -43,7 +44,7 @@ const NavItem: React.FC<NavItemProps> = ({
     (children &&
       React.Children.toArray(children).some(
         (child) =>
-          React.isValidElement<{ label: string }>(child) &&
+          React.isValidElement<{ label: string; href?: string }>(child) &&
           child.props.label === activeItem
       ));
 
@@ -73,21 +74,27 @@ const NavItem: React.FC<NavItemProps> = ({
 
 const SubItem: React.FC<{
   label: string;
+  href: string;
   activeItem: string;
   setActiveItem: (item: string) => void;
-}> = ({ label, activeItem, setActiveItem }) => (
-  <div
-    className={`cursor-pointer px-4 py-3 w-full block ${
-      activeItem === label ? "bg-gray-600 text-white" : "hover:bg-gray-700"
-    }`}
-    onClick={() => setActiveItem(label)} 
-  >
-    {label}
-  </div>
+}> = ({ label, href, activeItem, setActiveItem }) => (
+  <Link href={href} passHref>
+    <div
+      className={`cursor-pointer px-4 py-3 w-full block ${
+        activeItem === label ? "bg-gray-600 text-white" : "hover:bg-gray-700"
+      }`}
+      onClick={() => setActiveItem(label)}
+    >
+      {label}
+    </div>
+  </Link>
 );
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, activeItem, setActiveItem }) => {
-
+const Sidebar: React.FC<SidebarProps> = ({
+  isOpen,
+  activeItem,
+  setActiveItem,
+}) => {
   return (
     <aside
       className={`fixed top-0 left-0 h-full bg-gray-800 text-white w-64 transform transition-transform duration-300 ease-in-out ${
@@ -110,41 +117,49 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, activeItem, setActiveItem }) 
         >
           <SubItem
             label="Profile/LOV"
+            href="src/app/(admin)/profile-management/profile-lov" 
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
-          <SubItem
-            label="Country"
-            activeItem={activeItem}
-            setActiveItem={setActiveItem}
-          />
-          <SubItem
-            label="Province"
-            activeItem={activeItem}
-            setActiveItem={setActiveItem}
-          />
+            <SubItem
+              label="Country"
+              href="src/app/(admin)/profile-management/country"
+              activeItem={activeItem}
+              setActiveItem={setActiveItem}
+            />
+            <SubItem
+              label="Province"
+              href="src/app/(admin)/profile-management/province"
+              activeItem={activeItem}
+              setActiveItem={setActiveItem}
+            />
           <SubItem
             label="City"
+            href="src/app/(admin)/profile-management/city"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
           <SubItem
             label="Currency"
+            href="src/app/(admin)/profile-management/currency"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
+            <SubItem
+              label="Title"
+              href="src/app/(admin)/profile-management/title"
+              activeItem={activeItem}
+              setActiveItem={setActiveItem}
+            />
+            <SubItem
+              label="Theme"
+              href="src/app/(admin)/profile-management/theme"
+              activeItem={activeItem}
+              setActiveItem={setActiveItem}
+            />
           <SubItem
-            label="Title"
-            activeItem={activeItem}
-            setActiveItem={setActiveItem}
-          />
-          <SubItem 
-            label="Theme"
-            activeItem={activeItem}
-            setActiveItem={setActiveItem}
-          />
-          <SubItem 
-            label="Document Movement" 
+            label="Document Movement"
+            href="src/app/(admin)/profile-management/document-movement"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
@@ -157,16 +172,19 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, activeItem, setActiveItem }) 
         >
           <SubItem
             label="Organizations"
+            href=""
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
           <SubItem
             label="Departments"
+            href=""
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
           <SubItem
             label="Units"
+            href=""
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
@@ -179,58 +197,67 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, activeItem, setActiveItem }) 
         >
           <SubItem
             label="Locations"
+            href=""
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
           <SubItem
             label="Warehouses"
+            href=""
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
         </NavItem>
-        
+
         <NavItem
           label="Contact Management"
           activeItem={activeItem}
           setActiveItem={setActiveItem}
         >
           <SubItem
-            label="Consultant Registration"
+            label="Collection Point"
+            href="src/app/(admin)/contact-management/collection-point"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
           <SubItem
-            label="Collection Point" 
+            label="Consultant Registration"
+            href="src/app/(admin)/contact-management/consultant-registration"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
           <SubItem
             label="Corporate Registration"
+            href="src/app/(admin)/contact-management/corporate-registration"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
           <SubItem
-            label="Party Registration" 
+            label="Party Pricing"
+            href="src/app/(admin)/contact-management/party-pricing"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+          />
+          <SubItem
+            label="Party Registration"
+            href="src/app/(admin)/contact-management/party-registration"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+          />
+          <SubItem
+            label="Person Registration"
+            href="src/app/(admin)/contact-management/person-registration"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
           <SubItem
             label="Referral Registration"
-            activeItem={activeItem}
-            setActiveItem={setActiveItem}
-          />
-          <SubItem
-            label="Person Registration" 
-            activeItem={activeItem}
-            setActiveItem={setActiveItem}
-          />
-          <SubItem
-            label="Party Pricing" 
+            href="src/app/(admin)/contact-management/referral-registration"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
         </NavItem>
-        
+
         <NavItem
           label="Employee Management"
           activeItem={activeItem}
@@ -244,25 +271,68 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, activeItem, setActiveItem }) 
           setActiveItem={setActiveItem}
         >
           <SubItem
-            label="SMS Alerts"
+            label="Email Alerts"
+            href="src/app/(admin)/alerts-management/email-alerts"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
           <SubItem
-            label="Email Alerts"
+            label="SMS Alerts"
+            href="src/app/(admin)/alerts-management/sms-alerts"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
           />
         </NavItem>
 
-        <NavItem label="Menu Configuration" activeItem={activeItem} setActiveItem={setActiveItem} />
-        <NavItem label="Report Configuration" activeItem={activeItem} setActiveItem={setActiveItem} />
-        <NavItem label="User Management" activeItem={activeItem} setActiveItem={setActiveItem} />
-        <NavItem label="Policy Management" activeItem={activeItem} setActiveItem={setActiveItem} />
-        <NavItem label="Template Management" activeItem={activeItem} setActiveItem={setActiveItem} />
-        <NavItem label="Utility Management" activeItem={activeItem} setActiveItem={setActiveItem} />
-        <NavItem label="Reports Management" activeItem={activeItem} setActiveItem={setActiveItem} />
-
+        <Link href="/admin/menu-configuration" passHref>
+          <NavItem
+            label="Menu Configuration"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+          />
+        </Link>
+        <Link href="/admin/report-configuration" passHref>
+          <NavItem
+            label="Report Configuration"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+          />
+        </Link>
+        <Link href="/admin/user-management" passHref>
+          <NavItem
+            label="User Management"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+          />
+        </Link>
+        <Link href="/admin/policy-management" passHref>
+          <NavItem
+            label="Policy Management"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+          />
+        </Link>
+        <Link href="/admin/template-management" passHref>
+          <NavItem
+            label="Template Management"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+          />
+        </Link>
+        <Link href="/admin/utility-management" passHref>
+          <NavItem
+            label="Utility Management"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+          />
+        </Link>
+        <Link href="/admin/reports-management" passHref>
+          <NavItem
+            label="Reports Management"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+          />
+        </Link>
       </nav>
     </aside>
   );
