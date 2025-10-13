@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { FaEdit, FaChevronUp, FaChevronDown } from "react-icons/fa";
 
