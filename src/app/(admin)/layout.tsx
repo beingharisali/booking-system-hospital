@@ -11,30 +11,54 @@ export default function AdminLayoutClient({
   children: React.ReactNode;
 }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [activeItem, setActiveItem] = useState("Profile/LOV");
+  const [activeItem, setActiveItem] = useState("");
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const sidebarOpenWidth = "w-64";
+  const sidebarClosedWidth = "w-16";
+
+  const headerHeight = "h-16"; 
+
   return (
-    <>
-      <Header toggleSidebar={toggleSidebar} />
-      <div className="flex flex-1 overflow-hidden">
+    <div className="flex flex-col min-h-screen"> 
+      <Header
+        toggleSidebar={toggleSidebar}
+        isSidebarOpen={isSidebarOpen}
+        sidebarOpenWidth={sidebarOpenWidth}
+        sidebarClosedWidth={sidebarClosedWidth}
+      />
+
+      <div className={`flex flex-1 ${headerHeight} mt-16`}> 
         <Sidebar
           isOpen={isSidebarOpen}
           activeItem={activeItem}
           setActiveItem={setActiveItem}
+          sidebarOpenWidth={sidebarOpenWidth}
+          sidebarClosedWidth={sidebarClosedWidth}
         />
+
         <main
-          className={`flex-1 p-6 overflow-auto transition-all duration-300 ease-in-out ${
-            isSidebarOpen ? "ml-64" : "ml-0"
-          }`}
+          className={`
+            flex-1 p-6 transition-all duration-300 ease-in-out
+            ${isSidebarOpen ? "ml-64" : "ml-16"}
+          `}
         >
           {children}
         </main>
       </div>
-      <Footer />
-    </>
+
+      <div
+        className={`
+          bg-gray-200 shadow-inner flex items-center justify-center h-16
+          transition-all duration-300 ease-in-out
+          ${isSidebarOpen ? "ml-64 w-[calc(100%-16rem)]" : "ml-16 w-[calc(100%-4rem)]"}
+        `}
+      >
+        <Footer />
+      </div>
+    </div>
   );
 }

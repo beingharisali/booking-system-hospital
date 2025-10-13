@@ -9,6 +9,8 @@ interface SidebarProps {
   isOpen: boolean;
   activeItem: string;
   setActiveItem: (item: string) => void;
+  sidebarOpenWidth: string;
+  sidebarClosedWidth: string;
 }
 
 interface NavItemProps {
@@ -16,6 +18,8 @@ interface NavItemProps {
   children?: React.ReactNode;
   activeItem: string;
   setActiveItem: (item: string) => void;
+  href?: string;
+  isSidebarOpen: boolean;
 }
 
 const NavItem: React.FC<NavItemProps> = ({
@@ -23,13 +27,15 @@ const NavItem: React.FC<NavItemProps> = ({
   children,
   activeItem,
   setActiveItem,
+  href,
+  isSidebarOpen,
 }) => {
   const initialIsOpen =
     activeItem === label ||
     (children &&
       React.Children.toArray(children).some(
         (child) =>
-          React.isValidElement<{ label: string; href?: string }>(child) &&
+          React.isValidElement<{ label: string }>(child) &&
           child.props.label === activeItem
       ));
 
@@ -44,28 +50,39 @@ const NavItem: React.FC<NavItemProps> = ({
     (children &&
       React.Children.toArray(children).some(
         (child) =>
-          React.isValidElement<{ label: string; href?: string }>(child) &&
+          React.isValidElement<{ label: string }>(child) &&
           child.props.label === activeItem
       ));
 
+  const content = (
+    <div
+      className={`flex items-center justify-between p-4 cursor-pointer hover:bg-gray-700 ${
+        isParentActive ? "bg-gray-700" : ""
+      }`}
+      onClick={() => {
+        setActiveItem(label);
+        if (children) {
+          toggleOpen();
+        }
+      }}
+    >
+      <span className={isSidebarOpen ? "" : "hidden"}>{label}</span>
+      {children && isSidebarOpen && (isOpen ? <FaChevronUp /> : <FaChevronDown />)}
+    </div>
+  );
+
+  if (href && !children) {
+    return (
+      <Link href={href}>
+        {content}
+      </Link>
+    );
+  }
+
   return (
     <div>
-      <div
-        className={`flex items-center justify-between p-4 cursor-pointer hover:bg-gray-700 ${
-          isParentActive ? "bg-gray-700" : ""
-        }`}
-        onClick={() => {
-          if (children) {
-            toggleOpen();
-          } else {
-            setActiveItem(label); 
-          }
-        }}
-      >
-        <span>{label}</span>
-        {children && (isOpen ? <FaChevronUp /> : <FaChevronDown />)}
-      </div>
-      {isOpen && children && (
+      {content}
+      {isOpen && children && isSidebarOpen && (
         <div className="pl-2 bg-gray-800">{children}</div>
       )}
     </div>
@@ -77,12 +94,13 @@ const SubItem: React.FC<{
   href: string;
   activeItem: string;
   setActiveItem: (item: string) => void;
-}> = ({ label, href, activeItem, setActiveItem }) => (
-  <Link href={href} passHref>
+  isSidebarOpen: boolean;
+}> = ({ label, href, activeItem, setActiveItem, isSidebarOpen }) => (
+  <Link href={href}>
     <div
       className={`cursor-pointer px-4 py-3 w-full block ${
         activeItem === label ? "bg-gray-600 text-white" : "hover:bg-gray-700"
-      }`}
+      } ${isSidebarOpen ? "" : "hidden"}`}
       onClick={() => setActiveItem(label)}
     >
       {label}
@@ -94,74 +112,88 @@ const Sidebar: React.FC<SidebarProps> = ({
   isOpen,
   activeItem,
   setActiveItem,
+  sidebarOpenWidth,
+  sidebarClosedWidth,
 }) => {
   return (
     <aside
-      className={`fixed top-0 left-0 h-full bg-gray-800 text-white w-64 transform transition-transform duration-300 ease-in-out ${
-        isOpen ? "translate-x-0" : "-translate-x-full"
-      } z-30 flex flex-col`}
+      className={`
+        fixed top-0 left-0 h-screen bg-gray-800 text-white
+        ${isOpen ? sidebarOpenWidth : sidebarClosedWidth}
+        transform transition-all duration-300 ease-in-out
+        z-30 flex flex-col
+      `}
     >
-      <div className="flex items-center justify-center p-4 bg-gray-900 flex-shrink-0">
+      <div className="flex items-center justify-center p-4 bg-gray-900 flex-shrink-0 h-16 relative"> 
         <Image src="/logo.png" alt="Healthsol" width={100} height={40} />
       </div>
 
-      <nav className="mt-4 flex-1 overflow-y-auto">
-        <div className="p-4 text-sm uppercase text-gray-400">
-          Main Navigation
+      <nav className="flex-1 overflow-y-auto">
+        <div className={`p-4 text-sm uppercase text-gray-400 ${isOpen ? "" : "hidden"}`}>
+          MAIN NAVIGATION
         </div>
 
         <NavItem
           label="Profile Management"
           activeItem={activeItem}
           setActiveItem={setActiveItem}
+          isSidebarOpen={isOpen}
         >
           <SubItem
             label="Profile/LOV"
-            href="src/app/(admin)/profile-management/profile-lov" 
+            href="/profile-management/profile-lov"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
+            isSidebarOpen={isOpen}
           />
             <SubItem
               label="Country"
-              href="src/app/(admin)/profile-management/country"
+              href="/profile-management/country"
               activeItem={activeItem}
               setActiveItem={setActiveItem}
+              isSidebarOpen={isOpen}
             />
             <SubItem
               label="Province"
-              href="src/app/(admin)/profile-management/province"
+              href="/profile-management/province"
               activeItem={activeItem}
               setActiveItem={setActiveItem}
+              isSidebarOpen={isOpen}
             />
           <SubItem
             label="City"
-            href="src/app/(admin)/profile-management/city"
+            href="/profile-management/city"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
+            isSidebarOpen={isOpen}
           />
           <SubItem
             label="Currency"
-            href="src/app/(admin)/profile-management/currency"
+            href="/profile-management/currency"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
+            isSidebarOpen={isOpen}
           />
             <SubItem
               label="Title"
-              href="src/app/(admin)/profile-management/title"
+              href="/profile-management/title"
               activeItem={activeItem}
               setActiveItem={setActiveItem}
+              isSidebarOpen={isOpen}
             />
             <SubItem
               label="Theme"
-              href="src/app/(admin)/profile-management/theme"
+              href="/profile-management/theme"
               activeItem={activeItem}
               setActiveItem={setActiveItem}
+              isSidebarOpen={isOpen}
             />
           <SubItem
             label="Document Movement"
-            href="src/app/(admin)/profile-management/document-movement"
+            href="/profile-management/document-movement"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
+            isSidebarOpen={isOpen}
           />
         </NavItem>
 
@@ -169,24 +201,28 @@ const Sidebar: React.FC<SidebarProps> = ({
           label="Organization Management"
           activeItem={activeItem}
           setActiveItem={setActiveItem}
+          isSidebarOpen={isOpen}
         >
           <SubItem
             label="Organizations"
-            href=""
+            href="/organization-management/organizations"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
+            isSidebarOpen={isOpen}
           />
           <SubItem
             label="Departments"
-            href=""
+            href="/organization-management/departments"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
+            isSidebarOpen={isOpen}
           />
           <SubItem
             label="Units"
-            href=""
+            href="/organization-management/units"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
+            isSidebarOpen={isOpen}
           />
         </NavItem>
 
@@ -194,18 +230,21 @@ const Sidebar: React.FC<SidebarProps> = ({
           label="Location Management"
           activeItem={activeItem}
           setActiveItem={setActiveItem}
+          isSidebarOpen={isOpen}
         >
           <SubItem
             label="Locations"
-            href=""
+            href="/location-management/locations"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
+            isSidebarOpen={isOpen}
           />
           <SubItem
             label="Warehouses"
-            href=""
+            href="/location-management/warehouses"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
+            isSidebarOpen={isOpen}
           />
         </NavItem>
 
@@ -213,55 +252,65 @@ const Sidebar: React.FC<SidebarProps> = ({
           label="Contact Management"
           activeItem={activeItem}
           setActiveItem={setActiveItem}
+          isSidebarOpen={isOpen}
         >
           <SubItem
             label="Collection Point"
-            href="src/app/(admin)/contact-management/collection-point"
+            href="/contact-management/collection-point"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
+            isSidebarOpen={isOpen}
           />
           <SubItem
             label="Consultant Registration"
-            href="src/app/(admin)/contact-management/consultant-registration"
+            href="/contact-management/consultant-registration"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
+            isSidebarOpen={isOpen}
           />
           <SubItem
             label="Corporate Registration"
-            href="src/app/(admin)/contact-management/corporate-registration"
+            href="/contact-management/corporate-registration"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
+            isSidebarOpen={isOpen}
           />
           <SubItem
             label="Party Pricing"
-            href="src/app/(admin)/contact-management/party-pricing"
+            href="/contact-management/party-pricing"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
+            isSidebarOpen={isOpen}
           />
           <SubItem
             label="Party Registration"
-            href="src/app/(admin)/contact-management/party-registration"
+            href="/contact-management/party-registration"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
+            isSidebarOpen={isOpen}
           />
           <SubItem
             label="Person Registration"
-            href="src/app/(admin)/contact-management/person-registration"
+            href="/contact-management/person-registration"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
+            isSidebarOpen={isOpen}
           />
           <SubItem
             label="Referral Registration"
-            href="src/app/(admin)/contact-management/referral-registration"
+            href="/contact-management/referral-registration"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
+            isSidebarOpen={isOpen}
           />
         </NavItem>
 
         <NavItem
           label="Employee Management"
+          href="/employee-management"
           activeItem={activeItem}
           setActiveItem={setActiveItem}
+          isSidebarOpen={isOpen}
         >
         </NavItem>
 
@@ -269,70 +318,73 @@ const Sidebar: React.FC<SidebarProps> = ({
           label="Alerts Management"
           activeItem={activeItem}
           setActiveItem={setActiveItem}
+          isSidebarOpen={isOpen}
         >
           <SubItem
             label="Email Alerts"
-            href="src/app/(admin)/alerts-management/email-alerts"
+            href="/alerts-management/email-alerts"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
+            isSidebarOpen={isOpen}
           />
           <SubItem
             label="SMS Alerts"
-            href="src/app/(admin)/alerts-management/sms-alerts"
+            href="/alerts-management/sms-alerts"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
+            isSidebarOpen={isOpen}
           />
         </NavItem>
 
-        <Link href="/admin/menu-configuration" passHref>
-          <NavItem
-            label="Menu Configuration"
-            activeItem={activeItem}
-            setActiveItem={setActiveItem}
-          />
-        </Link>
-        <Link href="/admin/report-configuration" passHref>
-          <NavItem
-            label="Report Configuration"
-            activeItem={activeItem}
-            setActiveItem={setActiveItem}
-          />
-        </Link>
-        <Link href="/admin/user-management" passHref>
-          <NavItem
-            label="User Management"
-            activeItem={activeItem}
-            setActiveItem={setActiveItem}
-          />
-        </Link>
-        <Link href="/admin/policy-management" passHref>
-          <NavItem
-            label="Policy Management"
-            activeItem={activeItem}
-            setActiveItem={setActiveItem}
-          />
-        </Link>
-        <Link href="/admin/template-management" passHref>
-          <NavItem
-            label="Template Management"
-            activeItem={activeItem}
-            setActiveItem={setActiveItem}
-          />
-        </Link>
-        <Link href="/admin/utility-management" passHref>
-          <NavItem
-            label="Utility Management"
-            activeItem={activeItem}
-            setActiveItem={setActiveItem}
-          />
-        </Link>
-        <Link href="/admin/reports-management" passHref>
-          <NavItem
-            label="Reports Management"
-            activeItem={activeItem}
-            setActiveItem={setActiveItem}
-          />
-        </Link>
+        <NavItem
+          label="Menu Configuration"
+          href="/menu-configuration"
+          activeItem={activeItem}
+          setActiveItem={setActiveItem}
+          isSidebarOpen={isOpen}
+        />
+        <NavItem
+          label="Report Configuration"
+          href="/report-configuration"
+          activeItem={activeItem}
+          setActiveItem={setActiveItem}
+          isSidebarOpen={isOpen}
+        />
+        <NavItem
+          label="User Management"
+          href="/user-management"
+          activeItem={activeItem}
+          setActiveItem={setActiveItem}
+          isSidebarOpen={isOpen}
+        />
+        <NavItem
+          label="Policy Management"
+          href="/policy-management"
+          activeItem={activeItem}
+          setActiveItem={setActiveItem}
+          isSidebarOpen={isOpen}
+        />
+        <NavItem
+          label="Template Management"
+          href="/template-management"
+          activeItem={activeItem}
+          setActiveItem={setActiveItem}
+          isSidebarOpen={isOpen}
+        />
+        <NavItem
+          label="Utility Management"
+          href="/utility-management"
+          activeItem={activeItem}
+          setActiveItem={setActiveItem}
+          isSidebarOpen={isOpen}
+        />
+        <NavItem
+          label="Reports Management"
+          href="/reports-management"
+          activeItem={activeItem}
+          setActiveItem={setActiveItem}
+          isSidebarOpen={isOpen}
+        />
       </nav>
     </aside>
   );
