@@ -19,11 +19,10 @@ export default function AdminLayoutClient({
 
   const sidebarOpenWidth = "w-64";
   const sidebarClosedWidth = "w-16";
-  const headerHeight = "h-16";
+  // const headerHeight = "h-16";
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Header */}
       <Header
         toggleSidebar={toggleSidebar}
         isSidebarOpen={isSidebarOpen}
@@ -31,7 +30,6 @@ export default function AdminLayoutClient({
         sidebarClosedWidth={sidebarClosedWidth}
       />
 
-      {/* Main content + sidebar */}
       <div className="flex flex-1 mt-16">
         <Sidebar
           isOpen={isSidebarOpen}
@@ -51,7 +49,6 @@ export default function AdminLayoutClient({
         </main>
       </div>
 
-      {/* Footer stays at the bottom of the page */}
       <div
         className={`
           bg-gray-800 text-white shadow-inner flex items-center justify-center h-16
