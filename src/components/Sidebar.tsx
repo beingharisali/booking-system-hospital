@@ -141,56 +141,56 @@ const Sidebar: React.FC<SidebarProps> = ({
         >
           <SubItem
             label="Profile/LOV"
-            href="/profile-management/profile-lov"
+            href="/admin/profile-management/profile-lov"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
             isSidebarOpen={isOpen}
           />
             <SubItem
               label="Country"
-              href="/profile-management/country"
+              href="/admin/profile-management/country"
               activeItem={activeItem}
               setActiveItem={setActiveItem}
               isSidebarOpen={isOpen}
             />
             <SubItem
               label="Province"
-              href="/profile-management/province"
+              href="/admin/profile-management/province"
               activeItem={activeItem}
               setActiveItem={setActiveItem}
               isSidebarOpen={isOpen}
             />
           <SubItem
             label="City"
-            href="/profile-management/city"
+            href="/admin/profile-management/city"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
             isSidebarOpen={isOpen}
           />
           <SubItem
             label="Currency"
-            href="/profile-management/currency"
+            href="/admin/profile-management/currency"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
             isSidebarOpen={isOpen}
           />
             <SubItem
               label="Title"
-              href="/profile-management/title"
+              href="/admin/profile-management/title"
               activeItem={activeItem}
               setActiveItem={setActiveItem}
               isSidebarOpen={isOpen}
             />
             <SubItem
               label="Theme"
-              href="/profile-management/theme"
+              href="/admin/profile-management/theme"
               activeItem={activeItem}
               setActiveItem={setActiveItem}
               isSidebarOpen={isOpen}
             />
           <SubItem
             label="Document Movement"
-            href="/profile-management/document-movement"
+            href="/admin/profile-management/document-movement"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
             isSidebarOpen={isOpen}
@@ -205,21 +205,21 @@ const Sidebar: React.FC<SidebarProps> = ({
         >
           <SubItem
             label="Organizations"
-            href="/organization-management/organizations"
+            href="/admin/organization-management/organizations"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
             isSidebarOpen={isOpen}
           />
           <SubItem
             label="Departments"
-            href="/organization-management/departments"
+            href="/admin/organization-management/departments"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
             isSidebarOpen={isOpen}
           />
           <SubItem
             label="Units"
-            href="/organization-management/units"
+            href="/admin/organization-management/units"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
             isSidebarOpen={isOpen}
@@ -234,14 +234,14 @@ const Sidebar: React.FC<SidebarProps> = ({
         >
           <SubItem
             label="Locations"
-            href="/location-management/locations"
+            href="/admin/location-management/locations"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
             isSidebarOpen={isOpen}
           />
           <SubItem
             label="Warehouses"
-            href="/location-management/warehouses"
+            href="/admin/location-management/warehouses"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
             isSidebarOpen={isOpen}
@@ -256,49 +256,49 @@ const Sidebar: React.FC<SidebarProps> = ({
         >
           <SubItem
             label="Collection Point"
-            href="/contact-management/collection-point"
+            href="/admin/contact-management/collection-point"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
             isSidebarOpen={isOpen}
           />
           <SubItem
             label="Consultant Registration"
-            href="/contact-management/consultant-registration"
+            href="/admin/contact-management/consultant-registration"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
             isSidebarOpen={isOpen}
           />
           <SubItem
             label="Corporate Registration"
-            href="/contact-management/corporate-registration"
+            href="/admin/contact-management/corporate-registration"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
             isSidebarOpen={isOpen}
           />
           <SubItem
             label="Party Pricing"
-            href="/contact-management/party-pricing"
+            href="/admin/contact-management/party-pricing"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
             isSidebarOpen={isOpen}
           />
           <SubItem
             label="Party Registration"
-            href="/contact-management/party-registration"
+            href="/admin/contact-management/party-registration"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
             isSidebarOpen={isOpen}
           />
           <SubItem
             label="Person Registration"
-            href="/contact-management/person-registration"
+            href="/admin/contact-management/person-registration"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
             isSidebarOpen={isOpen}
           />
           <SubItem
             label="Referral Registration"
-            href="/contact-management/referral-registration"
+            href="/admin/contact-management/referral-registration"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
             isSidebarOpen={isOpen}
@@ -307,7 +307,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 
         <NavItem
           label="Employee Management"
-          href="/employee-management"
+          href="/admin/employee-management"
           activeItem={activeItem}
           setActiveItem={setActiveItem}
           isSidebarOpen={isOpen}
@@ -322,14 +322,14 @@ const Sidebar: React.FC<SidebarProps> = ({
         >
           <SubItem
             label="Email Alerts"
-            href="/alerts-management/email-alerts"
+            href="/admin/alerts-management/email-alerts"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
             isSidebarOpen={isOpen}
           />
           <SubItem
             label="SMS Alerts"
-            href="/alerts-management/sms-alerts"
+            href="/admin/alerts-management/sms-alerts"
             activeItem={activeItem}
             setActiveItem={setActiveItem}
             isSidebarOpen={isOpen}
@@ -338,49 +338,49 @@ const Sidebar: React.FC<SidebarProps> = ({
 
         <NavItem
           label="Menu Configuration"
-          href="/menu-configuration"
+          href="/admin/menu-configuration"
           activeItem={activeItem}
           setActiveItem={setActiveItem}
           isSidebarOpen={isOpen}
         />
         <NavItem
           label="Report Configuration"
-          href="/report-configuration"
+          href="/admin/report-configuration"
           activeItem={activeItem}
           setActiveItem={setActiveItem}
           isSidebarOpen={isOpen}
         />
         <NavItem
           label="User Management"
-          href="/user-management"
+          href="/admin/user-management"
           activeItem={activeItem}
           setActiveItem={setActiveItem}
           isSidebarOpen={isOpen}
         />
         <NavItem
           label="Policy Management"
-          href="/policy-management"
+          href="/admin/policy-management"
           activeItem={activeItem}
           setActiveItem={setActiveItem}
           isSidebarOpen={isOpen}
         />
         <NavItem
           label="Template Management"
-          href="/template-management"
+          href="/admin/template-management"
           activeItem={activeItem}
           setActiveItem={setActiveItem}
           isSidebarOpen={isOpen}
         />
         <NavItem
           label="Utility Management"
-          href="/utility-management"
+          href="/admin/utility-management"
           activeItem={activeItem}
           setActiveItem={setActiveItem}
           isSidebarOpen={isOpen}
         />
         <NavItem
           label="Reports Management"
-          href="/reports-management"
+          href="/admin/reports-management"
           activeItem={activeItem}
           setActiveItem={setActiveItem}
           isSidebarOpen={isOpen}
