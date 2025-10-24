@@ -19,11 +19,10 @@ export default function AdminLayoutClient({
 
   const sidebarOpenWidth = "w-64";
   const sidebarClosedWidth = "w-16";
-
-  const headerHeight = "h-16"; 
+  // const headerHeight = "h-16";
 
   return (
-    <div className="flex flex-col min-h-screen"> 
+    <div className="flex flex-col min-h-screen">
       <Header
         toggleSidebar={toggleSidebar}
         isSidebarOpen={isSidebarOpen}
@@ -31,7 +30,7 @@ export default function AdminLayoutClient({
         sidebarClosedWidth={sidebarClosedWidth}
       />
 
-      <div className={`flex flex-1 ${headerHeight} mt-16`}> 
+      <div className="flex flex-1 mt-16">
         <Sidebar
           isOpen={isSidebarOpen}
           activeItem={activeItem}
@@ -52,7 +51,7 @@ export default function AdminLayoutClient({
 
       <div
         className={`
-          bg-gray-200 shadow-inner flex items-center justify-center h-16
+          bg-gray-800 text-white shadow-inner flex items-center justify-center h-16
           transition-all duration-300 ease-in-out
           ${isSidebarOpen ? "ml-64 w-[calc(100%-16rem)]" : "ml-16 w-[calc(100%-4rem)]"}
         `}
